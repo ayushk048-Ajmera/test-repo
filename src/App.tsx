@@ -15,6 +15,7 @@ import {
   createStyles,
   WithStyles,
   withStyles,
+  Paper,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 
@@ -39,25 +40,27 @@ function App(props: WithStyles<typeof styles>) {
   const { classes } = props;
   return (
     <>
-      <FormControl className={classes.textF}>
-        <FormLabel>Name</FormLabel>
-        <Input
-          type="text"
+      <Paper elevation={1}>
+        <FormControl className={classes.textF}>
+          <FormLabel>Name</FormLabel>
+          <Input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <FormHelperText>enter your name</FormHelperText>
+        </FormControl>
+
+        <TextField
+          className={classes.textF}
+          color="secondary"
+          label="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          variant="outlined"
+          helperText="your name"
         />
-        <FormHelperText>enter your name</FormHelperText>
-      </FormControl>
-
-      <TextField
-        className={classes.textF}
-        color="secondary"
-        label="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        variant="outlined"
-        helperText="your name"
-      />
+      </Paper>
     </>
   );
 }
